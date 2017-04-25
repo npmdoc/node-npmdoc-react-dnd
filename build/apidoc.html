@@ -112,6 +112,18 @@
 
         <li>
 
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">react-dnd.</span>checkDecoratorArguments</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">react-dnd.</span>cloneWithRef</span>
+
+        </li>
+
+        <li>
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">react-dnd.</span>createSourceConnector</span>
 
         </li>
@@ -154,6 +166,12 @@
 
         <li>
 
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">react-dnd.</span>isValidType</span>
+
+        </li>
+
+        <li>
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">react-dnd.</span>registerSource</span>
 
         </li>
@@ -161,6 +179,18 @@
         <li>
 
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">react-dnd.</span>registerTarget</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">react-dnd.</span>shallowEqual</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">react-dnd.</span>shallowEqualScalar</span>
 
         </li>
 
@@ -274,6 +304,32 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.react-dnd.checkDecoratorArguments">module react-dnd.checkDecoratorArguments</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.react-dnd.checkDecoratorArguments.default">
+            function <span class="apidocSignatureSpan">react-dnd.checkDecoratorArguments.</span>default
+            <span class="apidocSignatureSpan">(functionName, signature)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.react-dnd.cloneWithRef">module react-dnd.cloneWithRef</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.react-dnd.cloneWithRef.default">
+            function <span class="apidocSignatureSpan">react-dnd.cloneWithRef.</span>default
+            <span class="apidocSignatureSpan">(element, newRef)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
     <li class="apidocModuleLi"><a href="#apidoc.module.react-dnd.createSourceConnector">module react-dnd.createSourceConnector</a><ol>
 
         <li>
@@ -365,6 +421,19 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.react-dnd.isValidType">module react-dnd.isValidType</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.react-dnd.isValidType.default">
+            function <span class="apidocSignatureSpan">react-dnd.isValidType.</span>default
+            <span class="apidocSignatureSpan">(type, allowArray)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
     <li class="apidocModuleLi"><a href="#apidoc.module.react-dnd.registerSource">module react-dnd.registerSource</a><ol>
 
         <li>
@@ -385,6 +454,32 @@
             <a class="apidocElementLiA" href="#apidoc.element.react-dnd.registerTarget.default">
             function <span class="apidocSignatureSpan">react-dnd.registerTarget.</span>default
             <span class="apidocSignatureSpan">(type, target, manager)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.react-dnd.shallowEqual">module react-dnd.shallowEqual</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.react-dnd.shallowEqual.default">
+            function <span class="apidocSignatureSpan">react-dnd.shallowEqual.</span>default
+            <span class="apidocSignatureSpan">(objA, objB)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.react-dnd.shallowEqualScalar">module react-dnd.shallowEqualScalar</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.react-dnd.shallowEqualScalar.default">
+            function <span class="apidocSignatureSpan">react-dnd.shallowEqualScalar.</span>default
+            <span class="apidocSignatureSpan">(objA, objB)</span>
             </a>
 
         </li>
@@ -739,6 +834,16 @@ drop-target.html&#x27;, collect);
 
 
 
+
+
+
+
+
+
+
+
+
+
 </div>
 
 <div class="apidocSectionDiv">
@@ -829,7 +934,23 @@ _class.childContextTypes = CHILD_CONTEXT_TYPES, _temp);
     return (0, _hoistNonReactStatics2.default)(DragDropContextContainer, DecoratedComponent);
   };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
     </ul>
 
 
@@ -879,7 +1000,23 @@ _class.childContextTypes = CHILD_CONTEXT_TYPES, _temp);
   _this.backend = (0, _DragDropContext.unpackBackendForEs5Users)(props.backend);
   return _this;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
     </ul>
 
 
@@ -991,7 +1128,23 @@ call(this, props));
         key: &#x27;render&#x27;,
         value: function render() {
           var _this2 = this; ...</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
     </ul>
 
 
@@ -1050,7 +1203,23 @@ drag-source.html&#x27;, collect);
     });
   };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
     </ul>
 
 
@@ -1109,7 +1278,23 @@ drop-target.html&#x27;, collect);
     });
   };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
     </ul>
 
 
@@ -1133,7 +1318,126 @@ drop-target.html&#x27;, collect);
 
   return currentOptions !== null &#x26;&#x26; nextOptions !== null &#x26;&#x26; (0, _shallowEqual2.default)(currentOptions, nextOptions);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.react-dnd.checkDecoratorArguments" id="apidoc.module.react-dnd.checkDecoratorArguments">module react-dnd.checkDecoratorArguments</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.react-dnd.checkDecoratorArguments.default" id="apidoc.element.react-dnd.checkDecoratorArguments.default">
+        function <span class="apidocSignatureSpan">react-dnd.checkDecoratorArguments.</span>default
+        <span class="apidocSignatureSpan">(functionName, signature)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function checkDecoratorArguments(functionName, signature) {
+  if (process.env.NODE_ENV !== &#x27;production&#x27;) {
+    for (var i = 0; i &#x3c; (arguments.length &#x3c;= 2 ? 0 : arguments.length - 2); i += 1) {
+      var arg = arguments.length &#x3c;= i + 2 ? undefined : arguments[i + 2];
+      if (arg &#x26;&#x26; arg.prototype &#x26;&#x26; arg.prototype.render) {
+        console.error( // eslint-disable-line no-console
+        &#x27;You seem to be applying the arguments in the wrong order. &#x27; + (&#x27;It should be &#x27; + functionName + &#x27;(&#x27; + signature + &#x27;)(Component
+), not the other way around. &#x27;) + &#x27;Read more: http://react-dnd.github.io/react-dnd/docs-troubleshooting.html#you-seem-to-be-applying
+-the-arguments-in-the-wrong-order&#x27;);
+        return;
+      }
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.react-dnd.cloneWithRef" id="apidoc.module.react-dnd.cloneWithRef">module react-dnd.cloneWithRef</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.react-dnd.cloneWithRef.default" id="apidoc.element.react-dnd.cloneWithRef.default">
+        function <span class="apidocSignatureSpan">react-dnd.cloneWithRef.</span>default
+        <span class="apidocSignatureSpan">(element, newRef)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function cloneWithRef(element, newRef) {
+  var previousRef = element.ref;
+  (0, _invariant2.default)(typeof previousRef !== &#x27;string&#x27;, &#x27;Cannot connect React DnD to an element with an existing string ref. &#x27; + &#x27;
+Please convert it to use a callback ref instead, or wrap it into a &#x3c;span&#x3e; or &#x3c;div&#x3e;. &#x27; + &#x27;Read more: https://facebook.github.io/react
+/docs/more-about-refs.html#the-ref-callback-attribute&#x27;);
+
+  if (!previousRef) {
+    // When there is no ref on the element, use the new ref directly
+    return (0, _react.cloneElement)(element, {
+      ref: newRef
+    });
+  }
+
+  return (0, _react.cloneElement)(element, {
+    ref: function ref(node) {
+      newRef(node);
+
+      if (previousRef) {
+        previousRef(node);
+      }
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
     </ul>
 
 
@@ -1223,7 +1527,23 @@ drop-target.html&#x27;, collect);
     hooks: hooks
   };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
     </ul>
 
 
@@ -1320,7 +1640,23 @@ key, spec[key]);
     return new Source(monitor);
   };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
     </ul>
 
 
@@ -1340,7 +1676,23 @@ key, spec[key]);
     <li>description and source-code<pre class="apidocCodePre">function createSourceMonitor(manager) {
   return new SourceMonitor(manager);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
     </ul>
 
 
@@ -1402,7 +1754,23 @@ key, spec[key]);
     hooks: hooks
   };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
     </ul>
 
 
@@ -1495,7 +1863,23 @@ key, spec[key]);
     return new Target(monitor);
   };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
     </ul>
 
 
@@ -1515,7 +1899,23 @@ key, spec[key]);
     <li>description and source-code<pre class="apidocCodePre">function createTargetMonitor(manager) {
   return new TargetMonitor(manager);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
     </ul>
 
 
@@ -1643,7 +2043,62 @@ key, spec[key]);
 
         var globalMonitor = this.manager.getMonitor();
         var unsubscribe = globalMon ...</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.react-dnd.isValidType" id="apidoc.module.react-dnd.isValidType">module react-dnd.isValidType</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.react-dnd.isValidType.default" id="apidoc.element.react-dnd.isValidType.default">
+        function <span class="apidocSignatureSpan">react-dnd.isValidType.</span>default
+        <span class="apidocSignatureSpan">(type, allowArray)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function isValidType(type, allowArray) {
+       return typeof type === &#x27;string&#x27; || (typeof type === &#x27;undefined&#x27; ? &#x27;undefined&#x27; : _typeof(type)) === &#x27;symbol&#x27; || allowArray
+ &#x26;&#x26; (0, _isArray2.default)(type) &#x26;&#x26; type.every(function (t) {
+              return isValidType(t, false);
+       });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
     </ul>
 
 
@@ -1673,7 +2128,23 @@ key, spec[key]);
     unregister: unregisterSource
   };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
     </ul>
 
 
@@ -1703,7 +2174,153 @@ key, spec[key]);
     unregister: unregisterTarget
   };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.react-dnd.shallowEqual" id="apidoc.module.react-dnd.shallowEqual">module react-dnd.shallowEqual</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.react-dnd.shallowEqual.default" id="apidoc.element.react-dnd.shallowEqual.default">
+        function <span class="apidocSignatureSpan">react-dnd.shallowEqual.</span>default
+        <span class="apidocSignatureSpan">(objA, objB)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function shallowEqual(objA, objB) {
+  if (objA === objB) {
+    return true;
+  }
+
+  var keysA = Object.keys(objA);
+  var keysB = Object.keys(objB);
+
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
+
+  // Test for A&#x27;s keys different from B.
+  var hasOwn = Object.prototype.hasOwnProperty;
+  for (var i = 0; i &#x3c; keysA.length; i += 1) {
+    if (!hasOwn.call(objB, keysA[i]) || objA[keysA[i]] !== objB[keysA[i]]) {
+      return false;
+    }
+
+    var valA = objA[keysA[i]];
+    var valB = objB[keysA[i]];
+
+    if (valA !== valB) {
+      return false;
+    }
+  }
+
+  return true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.react-dnd.shallowEqualScalar" id="apidoc.module.react-dnd.shallowEqualScalar">module react-dnd.shallowEqualScalar</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.react-dnd.shallowEqualScalar.default" id="apidoc.element.react-dnd.shallowEqualScalar.default">
+        function <span class="apidocSignatureSpan">react-dnd.shallowEqualScalar.</span>default
+        <span class="apidocSignatureSpan">(objA, objB)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function shallowEqualScalar(objA, objB) {
+  if (objA === objB) {
+    return true;
+  }
+
+  if ((typeof objA === &#x27;undefined&#x27; ? &#x27;undefined&#x27; : _typeof(objA)) !== &#x27;object&#x27; || objA === null || (typeof objB === &#x27;undefined&#x27; ? &#x27;
+undefined&#x27; : _typeof(objB)) !== &#x27;object&#x27; || objB === null) {
+    return false;
+  }
+
+  var keysA = Object.keys(objA);
+  var keysB = Object.keys(objB);
+
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
+
+  // Test for A&#x27;s keys different from B.
+  var hasOwn = Object.prototype.hasOwnProperty;
+  for (var i = 0; i &#x3c; keysA.length; i += 1) {
+    if (!hasOwn.call(objB, keysA[i])) {
+      return false;
+    }
+
+    var valA = objA[keysA[i]];
+    var valB = objB[keysA[i]];
+
+    if (valA !== valB || (typeof valA === &#x27;undefined&#x27; ? &#x27;undefined&#x27; : _typeof(valA)) === &#x27;object&#x27; || (typeof valB === &#x27;undefined
+&#x27; ? &#x27;undefined&#x27; : _typeof(valB)) === &#x27;object&#x27;) {
+      return false;
+    }
+  }
+
+  return true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
     </ul>
 
 
@@ -1733,7 +2350,23 @@ key, spec[key]);
 
   return wrappedHooks;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	    var context = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : {};
+
+	    _classCallCheck(this, DragDropManager);
+
+	    var store = (0, _createStore2.default)(_reducers2.default);
+	    this.context = context;
+	    this.store = store;
+	    this.monitor = new _DragDropMonitor2.<span class="apidocCodeKeywordSpan">default</span>(store);
+	    this.registry = this.monitor.registry;
+	    this.backend = createBackend(this);
+
+	    store.subscribe(this.handleRefCountChange.bind(this));
+	  }
+
+	  _createClass(DragDropManager, [{
+...</pre></li>
     </ul>
 
 
